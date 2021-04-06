@@ -1,8 +1,9 @@
 package org.scoalaonline.api.model;
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
-public class Customer {
+
 
   @Entity
   @Table(name = "customers")
@@ -28,13 +29,18 @@ public class Customer {
       this.firstName=firstName;
       this.lastName=lastName;
     }
-    
+
     public Customer(long id, String firstName, String lastName,List<Product> products ) {
       this.customerID = id;
       this.firstName=firstName;
       this.lastName=lastName;
-      this.products=products
+      this.products=products;
     }
+
+    public Customer() {
+      
+    }
+
     //region Getters
     public long getCustomerID() {
       return customerID;
