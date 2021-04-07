@@ -20,8 +20,12 @@ public class Customer {
   @Column(name = "last_name", nullable = false, length = 255)
   private String lastName;
 
-  @OneToMany(mappedBy = "customer")
-  private Set<Product> products;
+  @ManyToMany
+  @JoinTable(
+    name = "product_bought",
+    joinColumns = @JoinColumn(name = "customer_id"),
+    inverseJoinColumns = @JoinColumn(name = "product_id"))
+  private List<Product> products;
 
   @ManyToOne
   @JoinColumn(name="store_id")
@@ -33,7 +37,7 @@ public class Customer {
     this.lastName = lastName;
   }
 
-  public Customer(long id, String firstName, String lastName, Set<Product> products) {
+  public Customer(long id, String firstName, String lastName, List<Product> products) {
     this.customerID = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -68,11 +72,11 @@ public class Customer {
     this.lastName = lastName;
   }
 
-  public Set<Product> getProducts() {
+  public List<Product> getProducts() {
     return products;
   }
 
-  public void setProducts(Set<Product> products) {
+  public void setProducts(List<Product> products) {
     this.products = products;
   }
 

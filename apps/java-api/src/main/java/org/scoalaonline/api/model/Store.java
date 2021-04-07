@@ -1,8 +1,8 @@
 package org.scoalaonline.api.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "stores")
@@ -19,12 +19,12 @@ public class Store {
   private String address;
 
   @OneToMany(mappedBy = "store")
-  private Set<Customer> customers;
+  private List<Customer> customers;
 
-  @OneToMany(mappedBy = "store")
-  private Set<Product> products;
+  @ManyToMany
+  private List<Product> products;
 
-  public Store(long storeID, String name, String address, Set<Customer> customers, Set<Product> products) {
+  public Store(long storeID, String name, String address, List<Customer> customers, List<Product> products) {
     this.storeID = storeID;
     this.name = name;
     this.address = address;
@@ -60,19 +60,19 @@ public class Store {
     this.address = address;
   }
 
-  public Set<Customer> getCustomers() {
+  public List<Customer> getCustomers() {
     return customers;
   }
 
-  public void setCustomers(Set<Customer> customers) {
+  public void setCustomers(List<Customer> customers) {
     this.customers = customers;
   }
 
-  public Set<Product> getProducts() {
+  public List<Product> getProducts() {
     return products;
   }
 
-  public void setProducts(Set<Product> products) {
+  public void setProducts(List<Product> products) {
     this.products = products;
   }
 

@@ -1,6 +1,7 @@
 package org.scoalaonline.api.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -24,9 +25,8 @@ public class Product {
   @JoinColumn(name = "store_id")
   private Store store;
 
-  @ManyToOne
-  @JoinColumn(name = "customer_id")
-  private Store customer;
+  @ManyToMany(mappedBy = "products")
+  private List<Store> customers;
 
   public Product(long productID, String brand, String productName, int quantity) {
     this.productID = productID;
@@ -79,12 +79,12 @@ public class Product {
     this.store = store;
   }
 
-  public Store getCustomer() {
-    return customer;
+  public List<Store> getCustomers() {
+    return customers;
   }
 
-  public void setCustomer(Store customer) {
-    this.customer = customer;
+  public void setCustomers(List<Store> customers) {
+    this.customers = customers;
   }
 
   @Override
@@ -92,12 +92,12 @@ public class Product {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Product product = (Product) o;
-    return productID == product.productID && quantity == product.quantity && brand.equals(product.brand) && productName.equals(product.productName) && store.equals(product.store) && customer.equals(product.customer);
+    return productID == product.productID && quantity == product.quantity && brand.equals(product.brand) && productName.equals(product.productName) && store.equals(product.store) && customers.equals(product.customers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(productID, brand, productName, quantity, store, customer);
+    return Objects.hash(productID, brand, productName, quantity, store, customers);
   }
 }
 
