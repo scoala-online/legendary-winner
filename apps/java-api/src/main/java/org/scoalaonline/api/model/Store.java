@@ -21,7 +21,7 @@ public class Store {
   @OneToMany(mappedBy = "store")
   private List<Customer> customers;
 
-  @ManyToMany
+  @OneToMany(mappedBy = "store")
   private List<Product> products;
 
   public Store(long storeID, String name, String address, List<Customer> customers, List<Product> products) {
