@@ -25,8 +25,8 @@ public class Product {
   @JoinColumn(name = "store_id")
   private Store store;
 
-  @ManyToMany(mappedBy = "products")
-  private List<Store> customers;
+  @OneToMany(mappedBy = "product")
+  private List<ProductCart> customers;
 
   public Product(long productID, String brand, String productName, int quantity) {
     this.productID = productID;
@@ -79,11 +79,11 @@ public class Product {
     this.store = store;
   }
 
-  public List<Store> getCustomers() {
+  public List<ProductCart> getCustomers() {
     return customers;
   }
 
-  public void setCustomers(List<Store> customers) {
+  public void setCustomers(List<ProductCart> customers) {
     this.customers = customers;
   }
 
