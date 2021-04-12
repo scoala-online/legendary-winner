@@ -4,10 +4,12 @@ import org.scoalaonline.api.model.Product;
 import org.scoalaonline.api.model.Store;
 import org.scoalaonline.api.repo.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ProductService {
 
   @Autowired

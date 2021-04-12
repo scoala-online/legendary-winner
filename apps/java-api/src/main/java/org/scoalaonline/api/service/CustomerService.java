@@ -1,16 +1,18 @@
 package org.scoalaonline.api.service;
 
 import org.scoalaonline.api.model.Customer;
-import org.scoalaonline.api.repo.CustomertRepo;
+import org.scoalaonline.api.repo.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CustomerService {
 
   @Autowired
-  private CustomertRepo customerRepo;
+  private CustomerRepo customerRepo;
 
   public List<Customer> getAllCustomers() {
     return customerRepo.findAll();
