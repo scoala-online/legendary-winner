@@ -2,6 +2,7 @@ package org.scoalaonline.api.controller;
 
 import org.scoalaonline.api.exception.ResourceNotFoundException;
 import org.scoalaonline.api.model.Customer;
+import org.scoalaonline.api.model.Customer;
 import org.scoalaonline.api.model.Store;
 import org.scoalaonline.api.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,18 @@ public class CustomerController {
   public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
     Customer savedCustomer = customerService.addCustomer(customer);
     return new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
+  }
+
+  @PutMapping(value = ("/{id}"))
+  public ResponseEntity<Customer> updateCustomer (@PathVariable("id") long id,
+                                                @RequestBody Customer customer) {
+    if (customerService.customerExists(id)) {
+      Customer updatedCustomer = customerService.updateCustomer(id, customer);
+      return new ResponseEntity<>(updatedCustomer, HttpStatus.ACCEPTED);
+    } else {
+      throw new ResponseStatusException(
+        HttpStatus.NOT_FOUND, "Cannot update non-existing Customer", new ResourceNotFoundException()
+      );
+    }
   }
 }

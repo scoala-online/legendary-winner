@@ -39,4 +39,17 @@ public class StoreController {
     Store savedStore = storeService.addStore(store);
     return new ResponseEntity<>(savedStore, HttpStatus.CREATED);
   }
+
+  @PutMapping(value = ("/{id}"))
+  public ResponseEntity<Store> updateStore (@PathVariable("id") long id,
+                                                @RequestBody Store store) {
+    if (storeService.storeExists(id)) {
+      Store updatedStore = storeService.updateStore(id, store);
+      return new ResponseEntity<>(updatedStore, HttpStatus.ACCEPTED);
+    } else {
+      throw new ResponseStatusException(
+        HttpStatus.NOT_FOUND, "Cannot update non-existing Store", new ResourceNotFoundException()
+      );
+    }
+  }
 }
