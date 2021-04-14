@@ -1,15 +1,13 @@
 package org.scoalaonline.api.controller;
 
 import org.scoalaonline.api.exception.ResourceNotFoundException;
+import org.scoalaonline.api.model.Product;
 import org.scoalaonline.api.model.Store;
 import org.scoalaonline.api.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -34,5 +32,11 @@ public class StoreController {
         HttpStatus.NOT_FOUND, "No Store found with this ID", new ResourceNotFoundException()
       ));
     return new ResponseEntity<>(store, HttpStatus.OK);
+  }
+
+  @PostMapping(value = {"", "/"})
+  public ResponseEntity<Store> addStore(@RequestBody Store store) {
+    Store savedStore = storeService.addStore(store);
+    return new ResponseEntity<>(savedStore, HttpStatus.CREATED);
   }
 }
