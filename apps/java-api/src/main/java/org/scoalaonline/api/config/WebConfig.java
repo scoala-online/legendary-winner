@@ -1,4 +1,4 @@
-package com.programming.examproject.config;
+package org.scoalaonline.api.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
