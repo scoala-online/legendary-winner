@@ -39,4 +39,16 @@ public class StoreController {
     Store savedStore = storeService.addStore(store);
     return new ResponseEntity<>(savedStore, HttpStatus.CREATED);
   }
+
+  @DeleteMapping(value = ("/{id}"))
+  public ResponseEntity<HttpStatus> deleteStore(@PathVariable("id") long id) {
+    if (storeService.storeExists(id)) {
+      storeService.deleteStore(id);
+      return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    } else {
+      throw new ResponseStatusException(
+        HttpStatus.NOT_FOUND, "Cannot delete non-existing Store", new ResourceNotFoundException()
+      );
+    }
+  }
 }

@@ -41,4 +41,16 @@ public class ProductController {
     Product savedProduct = productService.addProduct(product);
     return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
   }
+
+  @DeleteMapping(value = ("/{id}"))
+  public ResponseEntity<HttpStatus> deleteProduct(@PathVariable("id") long id) {
+    if (productService.productExists(id)) {
+      productService.deleteProduct(id);
+      return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    } else {
+      throw new ResponseStatusException(
+        HttpStatus.NOT_FOUND, "Cannot delete non-existing Product", new ResourceNotFoundException()
+      );
+    }
+  }
 }
