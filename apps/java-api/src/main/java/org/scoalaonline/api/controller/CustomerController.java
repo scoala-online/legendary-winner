@@ -40,6 +40,19 @@ public class CustomerController {
     return new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
   }
 
+  @PutMapping(value = ("/{id}"))
+  public ResponseEntity<Customer> updateCustomer (@PathVariable("id") long id,
+                                                @RequestBody Customer customer) {
+    if (customerService.customerExists(id)) {
+      Customer updatedCustomer = customerService.updateCustomer(id, customer);
+      return new ResponseEntity<>(updatedCustomer, HttpStatus.ACCEPTED);
+    } else {
+      throw new ResponseStatusException(
+        HttpStatus.NOT_FOUND, "Cannot update non-existing Customer", new ResourceNotFoundException()
+      );
+    }
+  }
+        
   @DeleteMapping(value = ("/{id}"))
   public ResponseEntity<HttpStatus> deleteCustomer(@PathVariable("id") long id) {
     if (customerService.customerExists(id)) {
