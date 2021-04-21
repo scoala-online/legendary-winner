@@ -5,7 +5,6 @@ import org.scoalaonline.api.model.Customer;
 import org.scoalaonline.api.model.Product;
 import org.scoalaonline.api.model.Product;
 import org.scoalaonline.api.service.ProductService;
-import org.scoalaonline.api.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
