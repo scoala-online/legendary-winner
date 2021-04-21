@@ -2,7 +2,6 @@ package org.scoalaonline.api.controller;
 
 import org.scoalaonline.api.exception.ResourceNotFoundException;
 import org.scoalaonline.api.model.Customer;
-import org.scoalaonline.api.model.Customer;
 import org.scoalaonline.api.model.Store;
 import org.scoalaonline.api.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
