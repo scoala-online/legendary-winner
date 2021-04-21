@@ -3,7 +3,6 @@ package org.scoalaonline.api.controller;
 import org.scoalaonline.api.exception.ResourceNotFoundException;
 import org.scoalaonline.api.model.Customer;
 import org.scoalaonline.api.model.Product;
-import org.scoalaonline.api.model.Product;
 import org.scoalaonline.api.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
