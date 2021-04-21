@@ -52,4 +52,16 @@ public class CustomerController {
       );
     }
   }
+        
+  @DeleteMapping(value = ("/{id}"))
+  public ResponseEntity<HttpStatus> deleteCustomer(@PathVariable("id") long id) {
+    if (customerService.customerExists(id)) {
+      customerService.deleteCustomer(id);
+      return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    } else {
+      throw new ResponseStatusException(
+        HttpStatus.NOT_FOUND, "Cannot delete non-existing Customer", new ResourceNotFoundException()
+      );
+    }
+  }
 }
