@@ -2,6 +2,8 @@ package org.scoalaonline.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.scoalaonline.api.serializer.ProductCartSerializer;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,6 +27,7 @@ public class Customer {
   private String lastName;
 
   @OneToMany(mappedBy = "customer")
+  @JsonSerialize(using = ProductCartSerializer.class)
   private List<ProductCart> products;
 
   @ManyToOne

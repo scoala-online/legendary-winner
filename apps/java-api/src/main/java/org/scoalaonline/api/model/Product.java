@@ -2,6 +2,9 @@ package org.scoalaonline.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.scoalaonline.api.serializer.ProductCartSerializer;
+import org.scoalaonline.api.serializer.ProductSerializer;
 
 import javax.persistence.*;
 import java.util.List;
@@ -32,6 +35,7 @@ public class Product {
   private Store store;
 
   @OneToMany(mappedBy = "product")
+  @JsonSerialize(using = ProductCartSerializer.class)
   private List<ProductCart> customers;
 
   public Product(long productID, String brand, String productName, int quantity) {
