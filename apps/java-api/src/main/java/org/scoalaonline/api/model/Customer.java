@@ -1,13 +1,19 @@
 package org.scoalaonline.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.scoalaonline.api.serializer.ProductCartSerializer;
+
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "customers")
+@JsonIdentityInfo(
+  generator = ObjectIdGenerators.PropertyGenerator.class,
+  property = "customerID")
 public class Customer {
   @Id
   @GeneratedValue
@@ -21,6 +27,7 @@ public class Customer {
   private String lastName;
 
   @OneToMany(mappedBy = "customer")
+  @JsonSerialize(using = ProductCartSerializer.class)
   private List<ProductCart> products;
 
   @ManyToOne

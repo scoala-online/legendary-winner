@@ -1,11 +1,19 @@
 package org.scoalaonline.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.scoalaonline.api.serializer.ProductSerializer;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "stores")
+@JsonIdentityInfo(
+  generator = ObjectIdGenerators.PropertyGenerator.class,
+  property = "storeID")
 public class Store {
   @Id
   @GeneratedValue
@@ -22,6 +30,7 @@ public class Store {
   private List<Customer> customers;
 
   @OneToMany(mappedBy = "store")
+  @JsonSerialize(using = ProductSerializer.class)
   private List<Product> products;
 
   public Store(long storeID, String name, String address, List<Customer> customers, List<Product> products) {
