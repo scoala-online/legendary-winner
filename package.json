@@ -46,7 +46,11 @@
     "react-router-dom": "5.2.0",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
-    "zone.js": "^0.10.2"
+    "zone.js": "^0.10.2",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "react-bootstrap": "^1.4.3",
+    "react-toastify": "^7.0.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.0",
