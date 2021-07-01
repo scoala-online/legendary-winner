@@ -63,24 +63,14 @@ export default class ProductList extends React.Component {
         <Container>
           <br />
           <Row key={index}>
-            <Col>
-              {product.productID}
-            </Col>
-            <Col>
-              {product.brand}
-            </Col>
-            <Col>
-              {product.productName}
-            </Col>
-            <Col>
-              {product.quantity}
-            </Col>
+            <Col>{product.productID}</Col>
+            <Col>{product.brand}</Col>
+            <Col>{product.productName}</Col>
+            <Col>{product.quantity}</Col>
             <Col>
               {store.storeID} {store.name}
             </Col>
-            <Col>
-              {product.customers.length}
-            </Col>
+            <Col>{product.customers.length}</Col>
             <Col>
               <Link
                 to={{

@@ -55,21 +55,11 @@ export default class StoreList extends React.Component {
         <Container>
           <br />
           <Row key={index}>
-            <Col>
-              {store.storeID}
-            </Col>
-            <Col>
-              {store.name}
-            </Col>
-            <Col>
-              {store.address}
-            </Col>
-            <Col>
-              {store.customers.length}
-            </Col>
-            <Col>
-              {store.products.length}
-            </Col>
+            <Col>{store.storeID}</Col>
+            <Col>{store.name}</Col>
+            <Col>{store.address}</Col>
+            <Col>{store.customers.length}</Col>
+            <Col>{store.products.length}</Col>
             <Col>
               <Link
                 to={{

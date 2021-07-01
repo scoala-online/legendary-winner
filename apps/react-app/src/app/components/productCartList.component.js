@@ -50,61 +50,63 @@ export default class ProductCartList extends React.Component {
 
   render() {
     console.log(this.state);
-    const productCartList = this.state.productCarts.map((productCart, index) => {
-      let customer = productCart.customer;
-      if (!customer) {
-        customer = {
-          customerID: 0,
-          firstName: '',
-          lastName: '',
-        };
-      }
+    const productCartList = this.state.productCarts.map(
+      (productCart, index) => {
+        let customer = productCart.customer;
+        if (!customer) {
+          customer = {
+            customerID: 0,
+            firstName: '',
+            lastName: '',
+          };
+        }
 
-      let product = productCart.product;
-      if (!product) {
-        product = {
-          productID: 0,
-          name: '',
-          brand: '',
-        };
-      }
+        let product = productCart.product;
+        if (!product) {
+          product = {
+            productID: 0,
+            name: '',
+            brand: '',
+          };
+        }
 
-      return (
-        <Container>
-          <br />
-          <Row key={index}>
-            <Col>{productCart.id.productID} {productCart.id.customerID}</Col>
-            <Col>
-              {customer.firstName} {customer.lastName}
-            </Col>
-            <Col>
-              {product.brand} {product.name}
-            </Col>
-            <Col>
-              {productCart.amount}
-            </Col>
-            <Col>
-              <Link
-                to={{
-                  pathname: '/update',
-                  state: {
-                    id: productCart.id,
-                  },
-                }}
-              >
-                <Button variant="dark">Update</Button>
-              </Link>{' '}
-              <Button
-                variant="light"
-                onClick={(e) => this.deleteProductCart(productCart.id, e)}
-              >
-                Delete
-              </Button>
-            </Col>
-          </Row>
-        </Container>
-      );
-    });
+        return (
+          <Container>
+            <br />
+            <Row key={index}>
+              <Col>
+                {productCart.id.productID} {productCart.id.customerID}
+              </Col>
+              <Col>
+                {customer.firstName} {customer.lastName}
+              </Col>
+              <Col>
+                {product.brand} {product.name}
+              </Col>
+              <Col>{productCart.amount}</Col>
+              <Col>
+                <Link
+                  to={{
+                    pathname: '/update',
+                    state: {
+                      id: productCart.id,
+                    },
+                  }}
+                >
+                  <Button variant="dark">Update</Button>
+                </Link>{' '}
+                <Button
+                  variant="light"
+                  onClick={(e) => this.deleteProductCart(productCart.id, e)}
+                >
+                  Delete
+                </Button>
+              </Col>
+            </Row>
+          </Container>
+        );
+      }
+    );
 
     return (
       <Container>
