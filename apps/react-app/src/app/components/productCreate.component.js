@@ -55,10 +55,6 @@ class ProductCreate extends React.Component {
       });
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
     const product = this.state;
 

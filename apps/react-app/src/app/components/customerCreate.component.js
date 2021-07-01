@@ -38,10 +38,6 @@ class CustomerCreate extends React.Component {
       });
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
     const customer = this.state;
 

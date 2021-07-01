@@ -55,10 +55,6 @@ class StoreCreate extends React.Component {
       });
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
     const store = this.state;
 
