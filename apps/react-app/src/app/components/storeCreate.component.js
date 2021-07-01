@@ -14,7 +14,7 @@ class StoreCreate extends React.Component {
       name: '',
       address: '',
       customers: [],
-      products: []
+      products: [],
     };
   }
 
@@ -23,7 +23,7 @@ class StoreCreate extends React.Component {
       name: store.name,
       address: store.address,
       customers: store.customers,
-      products: store.products
+      products: store.products,
     };
 
     if (store.supervisorId !== 0) {

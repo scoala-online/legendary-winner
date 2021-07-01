@@ -14,7 +14,7 @@ class ProductCreate extends React.Component {
       brand: '',
       productName: '',
       quantity: 0,
-      customer: []
+      customer: [],
     };
   }
 
@@ -23,7 +23,7 @@ class ProductCreate extends React.Component {
       brand: product.brand,
       productName: product.productName,
       quantity: product.quantity,
-      customer: product.customer
+      customer: product.customer,
     };
 
     if (product.store !== 0) {

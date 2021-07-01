@@ -13,7 +13,7 @@ class CustomerCreate extends React.Component {
     this.state = {
       firstName: '',
       lastName: '',
-      products: []
+      products: [],
     };
   }
 
@@ -21,7 +21,7 @@ class CustomerCreate extends React.Component {
     let data = {
       firstName: customer.firstName,
       lastName: customer.lastName,
-      products: customer.products
+      products: customer.products,
     };
 
     console.log(data);
