@@ -8,7 +8,8 @@ class StoreCreate extends React.Component {
     super(props);
 
     this.createStore = this.createStore.bind(this);
-    this.getSupervisorList = this.getSupervisorList.bind(this);
+    this.getProductList = this.getProductList.bind(this);
+    this.getCustomerList = this.getCustomerList.bind(this);
 
     this.state = {
       name: '',
@@ -26,21 +27,6 @@ class StoreCreate extends React.Component {
       products: store.products,
     };
 
-    if (store.supervisorId !== 0) {
-      console.log(store.supervisorId);
-      data = {
-        ...data,
-        supervisor: {
-          id: store.supervisorId,
-        },
-      };
-    } else {
-      data = {
-        ...data,
-        supervisor: null,
-      };
-    }
-
     console.log(data);
 
     httpService
@@ -53,6 +39,37 @@ class StoreCreate extends React.Component {
       .catch((e) => {
         console.log(e);
       });
+  }
+
+  getProductList() {
+    httpService
+      .get('/products')
+      .then((response) => {
+        console.log('getProductList Response :');
+        console.log(response.data);
+        this.setState({ products: response.data });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
+  getCustomerList() {
+    httpService
+      .get('/customers')
+      .then((response) => {
+        console.log('getCustomerList Response :');
+        console.log(response.data);
+        this.setState({ customers: response.data });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
+  componentDidMount() {
+    this.getProductList();
+    this.getCustomerList();
   }
 
   render() {

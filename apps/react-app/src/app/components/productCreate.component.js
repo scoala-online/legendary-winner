@@ -8,7 +8,6 @@ class ProductCreate extends React.Component {
     super(props);
 
     this.createProduct = this.createProduct.bind(this);
-    this.getSupervisorList = this.getSupervisorList.bind(this);
 
     this.state = {
       brand: '',

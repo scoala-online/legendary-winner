@@ -8,13 +8,26 @@ class CustomerCreate extends React.Component {
     super(props);
 
     this.createCustomer = this.createCustomer.bind(this);
-    this.getSupervisorList = this.getSupervisorList.bind(this);
+    this.getProductList = this.getProductList.bind(this);
 
     this.state = {
       firstName: '',
       lastName: '',
       products: [],
     };
+  }
+
+  getProductList() {
+    httpService
+      .get('/products')
+      .then((response) => {
+        console.log('getProductList Response :');
+        console.log(response.data);
+        this.setState({ products: response.data });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
   createCustomer(customer) {
@@ -36,6 +49,10 @@ class CustomerCreate extends React.Component {
       .catch((e) => {
         console.log(e);
       });
+  }
+
+  componentDidMount() {
+    this.getProductList();
   }
 
   render() {
