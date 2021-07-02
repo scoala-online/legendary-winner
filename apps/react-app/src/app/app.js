@@ -17,8 +17,16 @@ function App() {
           <Route exact path={['/customers', '']} component={CustomerList} />
           <Route exact path={['/products', '']} component={ProductList} />
           <Route exact path={['/stores', '']} component={StoreList} />
-          <Route exact path={['/productCarts', '']} component={ProductCartList} />
-          <Route exact path={['/productCartKeys', '']} component={ProductCartKeyList} />
+          <Route
+            exact
+            path={['/productCarts', '']}
+            component={ProductCartList}
+          />
+          <Route
+            exact
+            path={['/productCartKeys', '']}
+            component={ProductCartKeyList}
+          />
         </Switch>
       </Router>
     </div>
