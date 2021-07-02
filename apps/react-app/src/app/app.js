@@ -12,6 +12,9 @@ import ProductCartKeyList from './components/productCartKeyList.component';
 function App() {
   return (
     <div className="App">
+      <div>
+        <b>My Store App</b>
+      </div>
       <Router>
         <Switch>
           <Route exact path={['/customers', '']} component={CustomerList} />

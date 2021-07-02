@@ -17,6 +17,6 @@ describe('App', () => {
         <App />
       </BrowserRouter>
     );
-    expect(getByText('Welcome to react-app!')).toBeTruthy();
+    expect(getByText('My Store App')).toBeTruthy();
   });
 });
