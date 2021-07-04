@@ -13,7 +13,8 @@ class ProductCreate extends React.Component {
       brand: '',
       productName: '',
       quantity: 0,
-      customer: [],
+      customers: [],
+      store: null
     };
   }
 
@@ -22,10 +23,11 @@ class ProductCreate extends React.Component {
       brand: product.brand,
       productName: product.productName,
       quantity: product.quantity,
-      customer: product.customer,
+      customers: product.customers,
+      store: product.store
     };
 
-    if (product.store !== 0) {
+    if (product.store !== null) {
       console.log(product.store);
       data = {
         ...data,
